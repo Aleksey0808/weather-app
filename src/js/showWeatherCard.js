@@ -1,16 +1,24 @@
-export default function showWeatherMarkup(value) {
-  return value
-    .map(data => {
-      return `<h2 class="city">Weather in ${data.name}</h2>
-  <h1 class="temp">${data.main.temp}°C</h1>
-  <div class="flex">
-    <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}.png" alt="" class="icon" />
-    <div class="description">${data.weather[0].description}</div>
-  </div>
-  <div class="humidity">Humidity: ${data.main.humidity}%</div>
-  <div class="wind">Wind speed: ${data.wind.speed} km/h</div>`;
-    })
-    .join('');
+// export function showWeatherMarkup(value) {
+//   return `<h2 class="city">Weather in ${data.name}</h2>
+//   <h1 class="temp">${data.main.temp}°C</h1>
+//   <div class="flex">
+//     <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}.png" alt="" class="icon" />
+//     <div class="description">${data.weather[0].description}</div>
+//   </div>
+//   <div class="humidity">Humidity: ${data.main.humidity}%</div>
+//   <div class="wind">Wind speed: ${data.wind.speed} km/h</div>`;
+// }
+export function showWeatherMarkup(data) {
+  console.log(data.main.temp);
+  console.log('hello');
+  return `<h2 class="city">Weather in ${data.name}</h2>
+   <h1 class="temp">${data.main.temp}°C</h1>
+   <div class="flex">
+     <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}.png" alt="" class="icon" />
+     <div class="description">${data.weather[0].description}</div>
+   </div>
+   <div class="humidity">Humidity: ${data.main.humidity}%</div>
+   <div class="wind">Wind speed: ${data.wind.speed} km/h</div>`;
 }
 
 // import refs from '../js/refs';

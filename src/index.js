@@ -5,6 +5,13 @@ import { showWeatherMarkup } from './js/showWeatherCard';
 import refs from './js/refs';
 import { Notify } from 'notiflix';
 
+const BASE_URL = `https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m`;
+fetch(BASE_URL)
+  .then(response => {
+    return response.json();
+  })
+  .then(response => console.log(response));
+
 refs.button.addEventListener('click', search);
 refs.searchBar.addEventListener('keyup', enterSearch);
 
@@ -16,10 +23,14 @@ function search() {
   fetchWeather(searchCountry)
     .then(response => {
       console.log(response);
-
+      // console.log(showWeatherMarkup(response));
       const markup = showWeatherMarkup(response);
-
-      refs.weather.innerHTML = markup;
+      const arrayAoi = Array.from(markup);
+      console.log(arrayAoi);
+      if (response.ok) {
+        const markup = response.map(response => showWeatherMarkup(response));
+        refs.weather.innerHTML = markup.join('');
+      }
       Notify.info(
         `Everything is fine, we found the weather in ${searchCountry}`
       );
