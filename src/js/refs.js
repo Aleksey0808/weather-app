@@ -8,4 +8,5 @@ export default {
   weather: document.querySelector('.weather'),
   searchBar: document.querySelector('.search-bar'),
   button: document.querySelector('.search button'),
+  card: document.querySelector('.card')
 };

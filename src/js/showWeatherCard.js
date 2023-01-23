@@ -1,4 +1,4 @@
-export function showWeatherMarkup(value) {
+export function showWeatherMarkup(data) {
   return `<h2 class="city">Weather in ${data.name}</h2>
   <h1 class="temp">${data.main.temp}°C</h1>
   <div class="flex">
