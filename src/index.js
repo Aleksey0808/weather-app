@@ -1,7 +1,7 @@
 import './css/styles.css';
 import { fetchWeather } from './js/weather-api';
 import { showWeatherMarkup } from './js/showWeatherCard';
-// import displayWeather from './js/showWeatherCars';
+
 import refs from './js/refs';
 import { Notify } from 'notiflix';
 
