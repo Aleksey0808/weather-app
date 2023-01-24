@@ -1,11 +1,23 @@
 import './css/styles.css';
 import { fetchWeather } from './js/weather-api';
 import { showWeatherMarkup } from './js/showWeatherCard';
+import VanillaTilt from "vanilla-tilt";
+
+const element = document.querySelector(".card");
+VanillaTilt.init(element, {
+  max: 3,
+  speed: 400,
+  scale: 1,
+  glare: true,
+  "max-glare": 0.3,
+  perspective: 500,
+  transition: true,
+  gyroscope: true,
+});
+
 
 import refs from './js/refs';
 import { Notify } from 'notiflix';
-
-const URL_IMAGE = 'https://source.unsplash.com/1600x900/';
 
 refs.button.addEventListener('click', search);
 refs.searchBar.addEventListener('keyup', enterSearch);
@@ -13,8 +25,8 @@ refs.searchBar.addEventListener('keyup', enterSearch);
 async function search() {
   let searchCountry = refs.searchBar.value.trim();
 
-  await fetchWeather(searchCountry)
-    .then(response => {
+    try{
+      const response = await fetchWeather(searchCountry)
       console.log(response);
       document.body.style.backgroundImage = `url('https://source.unsplash.com/1600x900/?"${response.name}"')`;
       const markup = showWeatherMarkup(response);
@@ -22,15 +34,15 @@ async function search() {
       Notify.info(
         `Everything is fine, we found the weather in ${searchCountry}`
       );
-    })
-    .catch(error => {
+    }
+    catch {
       Notify.failure('Error, no weather found for that name');
-      console.log(error);
-    });
+    };
 }
 
 function enterSearch(event) {
   if (event.key === 'Enter') {
     search();
   }
+  return
 }
