@@ -2,10 +2,10 @@
   "name": "parcel-project-template",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://Aleksey0808.github.io/weather-app_draft",
+  "homepage": "https://Aleksey0808.github.io/weather-app",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /weather-app_draft/"
+    "build": "parcel build src/*.html --public-url /weather-app/"
   },
   "repository": {
     "type": "git",
